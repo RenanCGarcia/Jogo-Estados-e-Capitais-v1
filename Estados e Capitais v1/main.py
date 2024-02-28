@@ -78,9 +78,9 @@ class Funcoes(Brasil):
                 Funcoes.capital = capital_btn
             if capital_btn == "vazio":
                 Funcoes.estado = estado_btn
+                
         elif Funcoes.btnsApert == 2:
-            if Funcoes.Pontos == 27:
-                ttk.messagebox.showinfo(title="Aviso", message=f"Você venceu, parabéns!")
+            
             btn2 = botao
             #btn2.configure(fg_color='yellow', text_color='black')
             if estado_btn == "vazio":
@@ -93,6 +93,24 @@ class Funcoes(Brasil):
                 self.ATTPontos()
                 btn2.destroy()
                 Funcoes.capital = Funcoes.estado = ''
+                if Funcoes.Pontos == 27:
+                    ttk.messagebox.showinfo(title="Aviso", message=f"Você venceu, parabéns!")
+                    self.frame_Estados.destroy()
+                    self.frame_Estados = CTkFrame(master=self.janela, width=640, height=720)
+                    self.frame_Estados.place(relx=0, rely=0)
+                    title = CTkLabel(master=self.frame_Estados, text="Estados e Capitais", font=("Comic Sans MS", 34))
+                    title.place(relx=0.1, rely=0.015)
+                    self.mostrar_Btn_Estados()
+                    self.frame_Capitais.destroy()
+                    self.frame_Capitais = CTkFrame(master=self.janela, width=640, height=720)
+                    self.frame_Capitais.place(relx=0.5, rely=0)
+                    self.mostrar_Btn_Capitais()
+                    Funcoes.Pontos = 0
+                    self.frame_Pontuacao.destroy()
+                    self.frame_Pontuacao = CTkFrame(master=self.frame_Capitais, width=250, height=60)
+                    self.frame_Pontuacao.place(relx=0.5, rely=0.01) 
+                    self.labelPontuacao = CTkLabel(master=self.frame_Pontuacao, text=f"Pontos: {Funcoes.Pontos}", font=("Comic Sans MS", 34))
+                    self.labelPontuacao.place(relx=0.22, rely=0.1)
             else:
                 ttk.messagebox.showinfo(title="Aviso", message=f"Você perdeu, tente novamente.")
                 self.frame_Estados.destroy()
