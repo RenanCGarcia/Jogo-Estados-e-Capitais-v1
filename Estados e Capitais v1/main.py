@@ -173,7 +173,6 @@ class App(Funcoes, Brasil):
         self.labelPontuacao = CTkLabel(master=self.frame_Pontuacao, text=f"Pontos: {Funcoes.Pontos}", font=("Comic Sans MS", 34))
         self.labelPontuacao.place(relx=0.22, rely=0.1)
     
-
     def run(self):
         self.janela.mainloop()
 
